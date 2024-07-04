@@ -1,0 +1,127 @@
+{
+    "1": {
+      "id": 1,
+      "name" : "Yuji Itadori",
+      "age" : 16,
+      "gender" : "masculino",
+      "species" : "humano"
+      
+    },
+    "2":{
+
+      "id": 2, 
+
+      "name" : "Megumi Fushiguro", 
+
+      "age" : 15, 
+
+      "gender" : "masculino", 
+
+      "species" : "humano" 
+    },
+    
+    "3":{
+      "id": 3, 
+
+      "name" : "Nobara Kugisaki", 
+
+      "age" : 15, 
+
+      "gender" : "Femenino", 
+
+      "species" : "humano" 
+    },
+    
+    "4":{
+
+      "id": 4, 
+
+      "name" : "Satoru Gojo", 
+
+      "age" : 28, 
+
+      "gender" : "masculino", 
+
+      "species" : "humano" 
+    },
+    
+    "5":{
+
+      "id": 5, 
+
+      "name" : "Sukuna", 
+
+      "age" : 2000, 
+
+      "gender" : "masculino", 
+
+      "species" : "Rey Demonio" 
+    },
+    
+    "6":{
+
+      "id": 6, 
+
+      "name" : "Junpei Yoshino", 
+
+      "age" : 15, 
+
+      "gender" : "masculino", 
+
+      "species" : "humano" 
+    
+    },
+    
+    "7":{
+
+      "id": 7, 
+
+      "name" : "Maki Zenin", 
+
+      "age" :15, 
+
+      "gender" : "Femenino", 
+
+      "species" : "Homano" 
+    },
+    
+    "8":{
+
+      "id": 8, 
+
+      "name" : "Toge Inumaki", 
+
+      "age" : 15, 
+
+      "gender" : "masculino", 
+
+      "species" : "humano" 
+    },
+    
+    "9":{
+
+      "id": 9, 
+
+      "name" : "Panda", 
+
+      "age" : 1000, 
+
+      "gender" : "Indefinodo", 
+
+      "species" : "Oso Panda" 
+    },
+    
+    "10":{
+
+      "id": 10, 
+
+      "name" : "jogo", 
+
+      "age" : 1000, 
+
+      "gender" : "masculino", 
+
+      "species" : "Rey Demonio"
+    }
+    
+}
