@@ -1,14 +1,13 @@
 {
     "scripts": {
-      "start": "nodemon index.js",
-      "mytest" : "echo 'hola'" 
-
+        "start": "nodemon index.js",
+        "mytest": "echo 'hola'"
     },
     "dependencies": {
-      "express": "^4.19.2"
+        "express": "^4.19.2",
+        "express-validator": "^7.1.0"
     },
     "devDependencies": {
-      "nodemon": "^3.1.0"
+        "nodemon": "^3.1.0"
     }
-  }
-  
+}

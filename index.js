@@ -1,104 +1,8 @@
 const express = require('express')
+const {body, validationResult} = require('express-validator')
 const db = require('./repository/repofile')
 const app = express()
 const port = 3000
-
-var Pers = [ 
-
-  { 
-
-     "Nombre" : "Yuji Itadori", 
-
-     "Edad" : 15, 
-
-     "Altura" : 1.73, 
-
-     "Especie" : "Humano", 
-
-     "Genero" : "Masculino", 
-
-     "ID" : 123, 
-
-    "Image URL" : "https://static.wikia.nocookie.net/jujutsu-kaisen/images/a/a2/Satoru_Gojo_-_Anime.jpg/revision/latest?cb=20201017190313&path-prefix=es" 
-
-  }, 
-
-  { 
-
-     "Nombre" : "Satoru Gojo", 
-
-     "Edad" : 28, 
-
-     "Altura" : 1.90, 
-
-     "Especie" : "Humano", 
-
-     "Genero" : "Masculino", 
-
-     "ID" : 254,
-  
-     "Image URL" : "https://static.wikia.nocookie.net/jujutsu-kaisen/images/a/a2/Satoru_Gojo_-_Anime.jpg/revision/latest?cb=20201017190313&path-prefix=es" 
-
-  }, 
-
-  { 
-
-     "Nombre" : "Kugisaki Nobara", 
-
-     "Edad" : 16, 
-
-     "Altura" :  1.60, 
-
-     "Especie" : "Humano", 
-
-     "Genero" : "Femenino", 
-
-     "ID" : 458, 
-
-     "Image URL" : "https://static.wikia.nocookie.net/jujutsu-kaisen/images/a/a2/Satoru_Gojo_-_Anime.jpg/revision/latest?cb=20201017190313&path-prefix=es" 
-
-
-
-  }, 
-
-  { 
-
-     "Nombre" : "Fushiguro Megumi", 
-
-     "Edad" : 15, 
-
-     "Altura" : 1.75, 
-
-     "Especie" : "Humano", 
-
-     "Genero" : "Masculino", 
-
-     "ID" : 877,
-     
-     "Image URL" : "https://static.wikia.nocookie.net/jujutsu-kaisen/images/a/a2/Satoru_Gojo_-_Anime.jpg/revision/latest?cb=20201017190313&path-prefix=es"
-
-
-  }, 
-
-  { 
-
-     "Nombre" : "Okkotsu Yuta", 
-
-     "Edad" : 17, 
-
-     "Altura" : 1.78, 
-
-     "Especie" : "Humano", 
-
-     "Genero" : "Masculino", 
-
-     "ID" : 999, 
-     
-     "Image URL" : "https://static.wikia.nocookie.net/jujutsu-kaisen/images/a/a2/Satoru_Gojo_-_Anime.jpg/revision/latest?cb=20201017190313&path-prefix=es" 
-
-  }, 
-
-] 
 
 app.use(express.json());
 
@@ -111,10 +15,20 @@ app.get('/personajes', async(req, res) => {
   res.status(200).json(Pers)
 })
 
-app.post('/personajes', async (req, res) =>{
-  let insertData = db.insert(req.body)
-  console.log(insertData)
-  res.status(201).json({message : "ok" })
+const nameValidator = () => body('name').trim().notEmpty()
+const ageValidator = () => body('age').trim().notEmpty()
+const genderValidator = () => body('gender').trim().notEmpty()
+const speciesValidator = () => body('species', 'this field is required').trim().notEmpty()
+
+
+app.post('/personajes', nameValidator(), ageValidator(), genderValidator(), speciesValidator(), async (req, res) =>{
+  const result = validationResult(req);
+  if (result.isEmpty()){
+    let insertData = db.insert(req.body)
+    res.status(201).json({message : "ok" })
+  }
+  res.status(400).json({ error: result.array() });
+ 
 })
 
 app.get('/personajes/:Persid', async(req, res) => {
@@ -125,9 +39,7 @@ app.get('/personajes/:Persid', async(req, res) => {
     res.status(404).json({message: "personaje Not Found"})
   }
   
-
 }) 
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
