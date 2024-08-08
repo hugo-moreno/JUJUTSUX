@@ -2,9 +2,9 @@ const dataBase = require("./db.json");
 const mapDataBase = new Map(Object.entries(dataBase));
 module.exports = Object.freeze({
   findById: (id) => mapDataBase.get(id),
-  insert: (cars) =>{
-    //logica para manejar el ID
-    mapDataBase.set(cars.id.toString(), cars)
+  insert: async (car) => {
+    return null
+  
   },
   findAll: () => Array.from(mapDataBase.values()),
   removeById: (id) => mapDataBase.delete(id),
